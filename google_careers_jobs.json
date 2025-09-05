@@ -1,0 +1,107 @@
+{
+  "site_name": "Google Careers",
+  "scrape_time": "2025-09-04 03:00:36",
+  "total_jobs": 20,
+  "jobs": [
+    {
+      "job_role": "Marketing Effectiveness and Analytical Lead, GCAS",
+      "job_experience": "Mid",
+      "job_location": "place Paris, France"
+    },
+    {
+      "job_role": "Program Manager III, Supply Chain Resiliency, Cloud Supply Chain",
+      "job_experience": "Mid",
+      "job_location": "place Atlanta, GA, USA ; Austin, TX, USA"
+    },
+    {
+      "job_role": "Strategic Cloud Engineer, Application Modernization, Technical Delivery",
+      "job_experience": "Mid",
+      "job_location": "place Reston, VA, USA"
+    },
+    {
+      "job_role": "Customer Engineer, Data Analytics, Digital Natives",
+      "job_experience": "Mid",
+      "job_location": "place Athens, Greece ; Prague, Czechia ; +1 more"
+    },
+    {
+      "job_role": "Product Manager II, Search",
+      "job_experience": "Mid",
+      "job_location": "place New York, NY, USA ; Mountain View, CA, USA"
+    },
+    {
+      "job_role": "Investigations Specialist",
+      "job_experience": "Mid",
+      "job_location": "place Bengaluru, Karnataka, India ; Gurgaon, Haryana, India ; +1 more"
+    },
+    {
+      "job_role": "Customer Onboarding Strategist (Vietnamese, English)",
+      "job_experience": "Early",
+      "job_location": "place Singapore"
+    },
+    {
+      "job_role": "Performance Lead, Demand Generation, Sales",
+      "job_experience": "Mid",
+      "job_location": "place Hamburg, Germany ; Berlin, Germany ; +1 more"
+    },
+    {
+      "job_role": "Manager, Technical Solutions, Android Business Communications",
+      "job_experience": "Advanced",
+      "job_location": "place Singapore"
+    },
+    {
+      "job_role": "Financial Analyst, Devices and Services",
+      "job_experience": "Mid",
+      "job_location": "place London, UK"
+    },
+    {
+      "job_role": "Staff Security Engineer, Endpoint Security",
+      "job_experience": "Advanced",
+      "job_location": "place Sydney NSW, Australia"
+    },
+    {
+      "job_role": "Software Engineer III, Google Cloud",
+      "job_experience": "Mid",
+      "job_location": "place Bengaluru, Karnataka, India ; Hyderabad, Telangana, India ; +1 more"
+    },
+    {
+      "job_role": "Technical Program Manager III, Audio and Algorithms, Pixel",
+      "job_experience": "Mid",
+      "job_location": "place New Taipei, Banqiao District, New Taipei City, Taiwan"
+    },
+    {
+      "job_role": "Staff Software Engineer, Spanner Infrastructure, Google Cloud",
+      "job_experience": "Advanced",
+      "job_location": "place Sunnyvale, CA, USA"
+    },
+    {
+      "job_role": "Software Engineer III, AI/ML",
+      "job_experience": "Mid",
+      "job_location": "place Zürich, Switzerland"
+    },
+    {
+      "job_role": "Data Center Facilities Technician, Mechanical",
+      "job_experience": "Early",
+      "job_location": "place Waltham Cross, UK"
+    },
+    {
+      "job_role": "Technical Solutions Engineer, Google Home",
+      "job_experience": "Mid",
+      "job_location": "place New Taipei, Banqiao District, New Taipei City, Taiwan"
+    },
+    {
+      "job_role": "Software Engineer III, Budgeting, Google Ads",
+      "job_experience": "Mid",
+      "job_location": "place Mountain View, CA, USA"
+    },
+    {
+      "job_role": "Senior Service Strategy Activation Lead",
+      "job_experience": "Advanced",
+      "job_location": "place Gurugram, Haryana, India ; Hyderabad, Telangana, India"
+    },
+    {
+      "job_role": "Senior Growth Manager, AppDev Sales (English, Chinese)",
+      "job_experience": "Mid",
+      "job_location": "place Beijing, China"
+    }
+  ]
+}

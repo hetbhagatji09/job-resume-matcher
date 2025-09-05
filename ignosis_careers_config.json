@@ -1,0 +1,59 @@
+{
+  "site_name": "Ignosis Careers",
+  "base_url": "https://ignosis.ai/careers/",
+  "wait_time": 15,
+  "scroll_pause_time": 3,
+  "infinite_scroll": false,
+  "selectors": {
+    "job_container": {
+      "selector": "//a[contains(., 'Years')]",
+      "selector_type": "xpath"
+    },
+    "job_role": {
+      "primary": {
+        "selector": "normalize-space(substring-before(., 'Years'))",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//h3",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".",
+          "selector_type": "xpath"
+        }
+      ]
+    },
+    "job_experience": {
+      "primary": {
+        "selector": "normalize-space(substring-after(., 'Years'))",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//text()[contains(., 'Years')]",
+          "selector_type": "xpath"
+        }
+      ]
+    },
+    "job_location": {
+      "primary": {
+        "type": "static",
+        "value": "India"
+      }
+    }
+  },
+  "selenium_config": {
+    "chrome_options": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-logging",
+      "--disable-gpu",
+      "--log-level=3",
+      "--silent",
+      "--disable-blink-features=AutomationControlled",
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ]
+  }
+}
