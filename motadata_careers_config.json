@@ -10,21 +10,22 @@
       "selector_type": "xpath"
     },
     "job_role": {
-      "primary": {
-        "selector": "normalize-space(substring-before(., 'Years'))",
-        "selector_type": "xpath"
-      },
-      "fallback": [
-        {
-          "selector": ".//h3",
-          "selector_type": "xpath"
-        },
-        {
-          "selector": ".",
-          "selector_type": "xpath"
-        }
-      ]
+  "primary": {
+    "selector": ".//h4",
+    "selector_type": "xpath"
+  },
+  "fallback": [
+    {
+      "selector": ".//h5",
+      "selector_type": "xpath"
     },
+    {
+      "selector": ".",
+      "selector_type": "xpath"
+    }
+  ]
+}
+,
     "job_experience": {
       "primary": {
         "selector": "normalize-space(substring-after(., 'Years'))",
