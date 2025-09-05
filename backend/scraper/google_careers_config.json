@@ -1,0 +1,87 @@
+{
+  "site_name": "Google Careers", 
+  "base_url": "https://www.google.com/about/careers/applications/jobs/results",
+  "wait_time": 15,
+  "scroll_pause_time": 3,
+  "infinite_scroll": true,
+  
+  "selectors": {
+    "job_container": {
+      "selector": "//div[@role='listitem'] | //li[contains(@class, 'lLd3Je')] | //div[contains(@class, 'job')] | //article",
+      "selector_type": "xpath"
+    },
+    
+    "job_role": {
+      "primary": {
+        "selector": ".//h3 | .//h4 | .//h2",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//a[contains(@class, 'WpHeLc')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//span[contains(@class, 'l2wECd')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": "h3, h4, h2, .job-title",
+          "selector_type": "css"
+        }
+      ]
+    },
+    
+    "job_experience": {
+      "primary": {
+        "selector": ".//span[contains(text(), 'Early') or contains(text(), 'Mid') or contains(text(), 'Advanced') or contains(text(), 'Senior')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[contains(text(), 'years') or contains(text(), 'experience')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//text()[contains(., 'years') or contains(., 'experience')]",
+          "selector_type": "xpath"
+        }
+      ]
+    },
+    
+    "job_location": {
+      "primary": {
+        "selector": ".//span[contains(@class, 'r0wTof')] | .//span[contains(@class, 'pwO9Dc')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[contains(text(), 'Mountain View') or contains(text(), 'New York') or contains(text(), 'London') or contains(text(), 'Remote')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".location, .job-location",
+          "selector_type": "css"
+        },
+        {
+          "selector": ".//span[position()=last()]",
+          "selector_type": "xpath"
+        }
+      ]
+    }
+    
+  },
+  
+  "selenium_config": {
+    "chrome_options": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage", 
+      "--disable-logging",
+      "--disable-gpu",
+      "--log-level=3",
+      "--silent",
+      "--disable-blink-features=AutomationControlled",
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ]
+  }
+}

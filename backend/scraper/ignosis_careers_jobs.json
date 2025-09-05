@@ -1,0 +1,37 @@
+{
+  "site_name": "Ignosis Careers",
+  "scrape_time": "2025-09-05 10:51:10",
+  "total_jobs": 6,
+  "jobs": [
+    {
+      "job_role": "Senior Software Engineer",
+      "job_experience": "senior",
+      "job_location": "Not specified"
+    },
+    {
+      "job_role": "Business Development Manager",
+      "job_experience": "4+ years",
+      "job_location": "Not specified"
+    },
+    {
+      "job_role": "ML Engineer",
+      "job_experience": "0-2 years",
+      "job_location": "Not specified"
+    },
+    {
+      "job_role": "Software Engineer",
+      "job_experience": "1+ years",
+      "job_location": "Not specified"
+    },
+    {
+      "job_role": "Technical Support Specialist",
+      "job_experience": "2-4 years",
+      "job_location": "Not specified"
+    },
+    {
+      "job_role": "Product Manager",
+      "job_experience": "3 + years",
+      "job_location": "Not specified"
+    }
+  ]
+}
