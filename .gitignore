@@ -5,6 +5,8 @@ build/
 dist/
 wheels/
 *.egg-info
-
+backend/**/__pycache__/
 # Virtual environments
-.venv
+.job-match-env
+venv/
+backend/job-match-env/
