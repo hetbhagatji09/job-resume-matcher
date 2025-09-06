@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 import json
 import time
+import os
 import re
 
 class CentralizedJobScraper:
@@ -279,20 +280,29 @@ class CentralizedJobScraper:
                 time.sleep(self.config['scroll_pause_time'])
     
     def save_jobs_to_file(self, jobs, filename=None):
-        """Save jobs to JSON file"""
+        """Save jobs to JSON file inside backend/scraped_jobs"""
+    
+        # Ensure folder exists
+        save_dir = os.path.join("scraped_jobs")
+        os.makedirs(save_dir, exist_ok=True)
+
+        # Auto-generate filename if not provided
         if not filename:
             site_name = self.config['site_name'].replace(' ', '_').lower()
             filename = f"{site_name}_jobs.json"
-        
-        with open(filename, 'w', encoding='utf-8') as f:
+    
+        filepath = os.path.join(save_dir, filename)
+
+        # Save JSON
+        with open(filepath, 'w', encoding='utf-8') as f:
             json.dump({
                 'site_name': self.config['site_name'],
                 'scrape_time': time.strftime('%Y-%m-%d %H:%M:%S'),
                 'total_jobs': len(jobs),
                 'jobs': jobs
             }, f, indent=2, ensure_ascii=False)
-        
-        print(f"Jobs saved to {filename}")
+    
+        print(f"✅ Jobs saved to {filepath}")
     
     def close(self):
         self.driver.quit()
