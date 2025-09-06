@@ -5,3 +5,6 @@ pydantic
 typing
 SQLAlchemy
 psycopg2
+spacy
+PyPDF2  
+python-multipart
