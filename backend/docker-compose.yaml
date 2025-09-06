@@ -1,0 +1,16 @@
+services:
+  pgvector_db:
+    container_name: job-resume-match-container
+    image: ankane/pgvector
+    environment:
+      POSTGRES_USER: 'bunny0901'
+      POSTGRES_PASSWORD: '0901'
+      POSTGRES_DB: 'job-resume-match'
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - pgvector_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"  # Host 5433 → Container 5432
+
+volumes:
+  pgvector_data:
