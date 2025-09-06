@@ -4,3 +4,4 @@ selenium
 pydantic
 typing
 SQLAlchemy
+psycopg2
