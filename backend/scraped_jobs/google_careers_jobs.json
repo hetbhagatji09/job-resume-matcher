@@ -1,6 +1,6 @@
 {
   "site_name": "Google Careers",
-  "scrape_time": "2025-09-06 15:46:28",
+  "scrape_time": "2025-09-07 01:27:57",
   "total_jobs": 20,
   "jobs": [
     {
@@ -69,14 +69,14 @@
       "job_location": "place New Taipei, Banqiao District, New Taipei City, Taiwan"
     },
     {
-      "job_role": "Investigations Specialist",
-      "job_experience": "Mid",
-      "job_location": "place Bengaluru, Karnataka, India ; Gurgaon, Haryana, India ; +1 more"
-    },
-    {
       "job_role": "Staff Software Engineer, Spanner Infrastructure, Google Cloud",
       "job_experience": "Advanced",
       "job_location": "place Sunnyvale, CA, USA"
+    },
+    {
+      "job_role": "Investigations Specialist",
+      "job_experience": "Mid",
+      "job_location": "place Bengaluru, Karnataka, India ; Gurgaon, Haryana, India ; +1 more"
     },
     {
       "job_role": "Financial Analyst, Devices and Services",
@@ -94,14 +94,14 @@
       "job_location": "place Mountain View, CA, USA"
     },
     {
-      "job_role": "Research Scientist, Earth AI",
-      "job_experience": "Mid",
-      "job_location": "place Mountain View, CA, USA ; San Francisco, CA, USA"
-    },
-    {
       "job_role": "Senior Service Strategy Activation Lead",
       "job_experience": "Advanced",
       "job_location": "place Gurugram, Haryana, India ; Hyderabad, Telangana, India"
+    },
+    {
+      "job_role": "Research Scientist, Earth AI",
+      "job_experience": "Mid",
+      "job_location": "place Mountain View, CA, USA ; San Francisco, CA, USA"
     }
   ]
 }

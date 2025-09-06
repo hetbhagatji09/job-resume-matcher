@@ -9,6 +9,10 @@ def create_job(db: Session, job_data: dict):
         job_experience=job_data.get("job_experience", "")
     )
     db.add(job)
+    db.flush()  # ✅ get auto-generated ID without committing yet
+    return job  # ✅ return ORM object
+
+
 def create_jobs(db: Session, jobs: list[dict]):
     """Insert multiple jobs into DB"""
     job_entries = []
