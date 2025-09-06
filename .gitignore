@@ -10,3 +10,4 @@ backend/**/__pycache__/
 .job-match-env
 venv/
 backend/job-match-env/
+backend/.env
