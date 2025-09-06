@@ -8,3 +8,9 @@ psycopg2
 spacy
 PyPDF2  
 python-multipart
+python-dotenv
+langchain
+langchain-community
+langchain-groq
+langchain-core
+langchain-google-genai
