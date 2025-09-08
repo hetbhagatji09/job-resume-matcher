@@ -1,4 +1,5 @@
-from fastapi import APIRouter, Query, HTTPException
+from fastapi import APIRouter, Query, HTTPException,Depends
+from database import get_db
 from services.scraper_service import scrape_jobs
 from sqlalchemy.orm import Session
 from crud.job_crud import create_jobs
@@ -24,4 +25,16 @@ def get_jobs(url: str = Query(..., description="Website URL to scrape jobs from"
 @router.get("/scraped")
 def getget_scrapedjobs(url: str = Query(..., description="Website URL to scrape jobs from")):
     jobs =scrape_jobs(url)
+    print(jobs)
     return jobs
+
+@router.post("/match_resumes")
+async def match_resumes(
+    job_data: dict,
+    top_k: int = Query(5, description="Number of resumes to return"),
+    db: Session = Depends(get_db)
+):
+    """
+    Match resumes for a given job object
+    """
+    return embedding_service.match_resumes(db, job_data, top_k)

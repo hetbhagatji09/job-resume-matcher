@@ -6,7 +6,10 @@ def create_job(db: Session, job_data: dict):
     job = Job(
         job_role=job_data.get("job_role", ""),
         job_location=job_data.get("job_location", ""),
-        job_experience=job_data.get("job_experience", "")
+        job_experience=job_data.get("job_experience", ""),
+        job_responsibilities=job_data.get("job_responsibilities",""),
+        job_requirements=job_data.get("job_requirements",""),
+        job_overview=job_data.get("job_overview","")
     )
     db.add(job)
     db.flush()  # ✅ get auto-generated ID without committing yet
