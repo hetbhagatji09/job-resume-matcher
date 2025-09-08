@@ -146,7 +146,7 @@ class CentralizedJobScraper:
         selectors = self.config['selectors']
         
         # Extract required fields: job_role, job_experience, job_location
-        required_fields = ['job_role', 'job_experience', 'job_location']
+        required_fields = ['job_role', 'job_experience', 'job_location',"job_responsibilities","job_requirements","job_overview"]
         
         for field_name in required_fields:
             if field_name in selectors:
