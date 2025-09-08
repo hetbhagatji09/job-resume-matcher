@@ -1,0 +1,185 @@
+{
+  "site_name": "Infocusp Careers",
+  "base_url": "https://infocusp.keka.com/careers/jobdetails/",
+  "wait_time": 15,
+  "scroll_pause_time": 3,
+  "infinite_scroll": false,
+
+  "selectors": {
+    "job_container": {
+      "selector": "//div[contains(@class, 'job-detail')] | //div[contains(@class, 'job-info')] | //div[contains(@class, 'career-detail')] | //main | //body",
+      "selector_type": "xpath"
+    },
+
+    "job_role": {
+      "primary": {
+        "selector": ".//h1[contains(@class, 'job-title')] | .//h1 | .//h2[contains(@class, 'title')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[contains(@class, 'job-title')]//h1 | .//div[contains(@class, 'job-title')]//h2",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//span[contains(@class, 'job-title')] | .//div[contains(@class, 'position')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": "h1",
+          "selector_type": "css"
+        },
+        {
+          "selector": "h2",
+          "selector_type": "css"
+        }
+      ]
+    },
+
+    "job_experience": {
+      "primary": {
+        "selector": ".//div[contains(@class, 'experience')] | .//span[contains(text(), 'Experience')] | .//p[contains(text(), 'Experience')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[contains(text(), 'years') or contains(text(), 'year')] | .//span[contains(text(), 'years') or contains(text(), 'year')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//li[contains(text(), 'Experience') or contains(text(), 'years')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//td[contains(text(), 'Experience')]/following-sibling::td",
+          "selector_type": "xpath"
+        },
+        {
+          "type": "static",
+          "value": "Not specified"
+        }
+      ]
+    },
+
+    "job_location": {
+      "primary": {
+        "selector": ".//div[contains(@class, 'location')] | .//span[contains(text(), 'Location')] | .//p[contains(text(), 'Location')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[contains(@class, 'address')] | .//span[contains(@class, 'location')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//li[contains(text(), 'Location') or contains(text(), 'Based')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//td[contains(text(), 'Location')]/following-sibling::td",
+          "selector_type": "xpath"
+        },
+        {
+          "type": "static",
+          "value": "India"
+        }
+      ]
+    },
+
+    "job_responsibilities": {
+      "primary": {
+        "selector": ".//div[contains(@class, 'responsibilities')] | .//section[contains(@class, 'responsibilities')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[preceding-sibling::*[contains(text(), 'Responsibilities') or contains(text(), 'Role') or contains(text(), 'Duties')]]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//ul[preceding-sibling::*[contains(text(), 'Responsibilities') or contains(text(), 'Role')]]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//h3[contains(text(), 'Responsibilities')]/following-sibling::ul | .//h4[contains(text(), 'Responsibilities')]/following-sibling::ul",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//h3[contains(text(), 'Role')]/following-sibling::ul | .//h4[contains(text(), 'Role')]/following-sibling::ul",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//div[contains(@class, 'job-description')]//ul[1]",
+          "selector_type": "xpath"
+        }
+      ]
+    },
+
+    "job_requirements": {
+      "primary": {
+        "selector": ".//div[contains(@class, 'requirements')] | .//section[contains(@class, 'requirements')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[preceding-sibling::*[contains(text(), 'Requirements') or contains(text(), 'Qualifications') or contains(text(), 'Skills')]]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//ul[preceding-sibling::*[contains(text(), 'Requirements') or contains(text(), 'Qualifications')]]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//h3[contains(text(), 'Requirements')]/following-sibling::ul | .//h4[contains(text(), 'Requirements')]/following-sibling::ul",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//h3[contains(text(), 'Qualifications')]/following-sibling::ul | .//h4[contains(text(), 'Qualifications')]/following-sibling::ul",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//h3[contains(text(), 'Skills')]/following-sibling::ul | .//h4[contains(text(), 'Skills')]/following-sibling::ul",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//div[contains(@class, 'job-description')]//ul[last()]",
+          "selector_type": "xpath"
+        }
+      ]
+    },
+
+    "job_overview": {
+      "primary": {
+        "selector": ".//div[contains(@class, 'job-description')] | .//div[contains(@class, 'overview')]",
+        "selector_type": "xpath"
+      },
+      "fallback": [
+        {
+          "selector": ".//div[preceding-sibling::*[contains(text(), 'Overview') or contains(text(), 'Description')]]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//p[contains(@class, 'description')] | .//div[contains(@class, 'description')]",
+          "selector_type": "xpath"
+        },
+        {
+          "selector": ".//section[contains(@class, 'job-info')]//p[1]",
+          "selector_type": "xpath"
+        }
+      ]
+    }
+  },
+
+  "selenium_config": {
+    "chrome_options": [
+      "--no-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-logging",
+      "--disable-gpu",
+      "--log-level=3",
+      "--silent",
+      "--disable-blink-features=AutomationControlled",
+      "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    ]
+  }
+}
