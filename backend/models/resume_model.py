@@ -13,5 +13,5 @@ class Resume(Base):
     skills = Column(Text, nullable=True)               # Could store as comma-separated string
     education = Column(Text, nullable=True)           # Could store as comma-separated string
     experience = Column(Text, nullable=True)          # Could store as comma-separated string
-    # certifications = Column(Text, nullable=True)
-    # projects = Column(Text, nullable=True)
+    projects = Column(Text, nullable=True)
+    certifications = Column(Text, nullable=True)
