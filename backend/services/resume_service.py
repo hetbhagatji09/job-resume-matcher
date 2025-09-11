@@ -8,6 +8,10 @@ from models.resume_model import Resume
 from dotenv import load_dotenv
 import os
 load_dotenv()
+model = ChatGroq(
+    temperature=0.3,
+    model_name="llama-3.1-8b-instant"
+)
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")  # read key from .env
 print("Loaded Groq API Key:", GROQ_API_KEY)
 model = ChatGroq(
@@ -87,3 +91,4 @@ class ResumeService:
         db.refresh(resume_obj)
 
         return resume_obj
+    

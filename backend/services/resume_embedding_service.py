@@ -1,15 +1,25 @@
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from sqlalchemy.orm import Session
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
 import json
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain
+from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 load_dotenv()
+from sentence_transformers import SentenceTransformer
+# Initialize Groq model (LLaMA 3.1)
+model = ChatGroq(
+    temperature=0.3,
+    model_name="llama-3.1-8b-instant"
+)
 
 class ResumeEmbeddingService:
     def __init__(self):
-        # Initialize Google Embedding model
-        self.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+        # Use HuggingFace embeddings (local & free)
+        self.embeddings = SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
 
     def store_resume_embedding(self, db: Session, resume: Resume):
         """
@@ -35,8 +45,6 @@ class ResumeEmbeddingService:
         # Build a meaningful string for embeddings
         resume_text = f"""
         Skills: {skills}
-        Education: {education}
-        Experience: {experience}
         Projects: {projects}
         Certifications: {certifications}
         """
@@ -45,7 +53,7 @@ class ResumeEmbeddingService:
             return {"status": "error", "message": "Empty resume text"}
 
         # Generate vector
-        vector = self.embeddings.embed_query(resume_text)
+        vector = self.embeddings.encode(resume_text,convert_to_numpy=True)
 
         # Store in DB
         resume_vector_entry = ResumeEmbedding(

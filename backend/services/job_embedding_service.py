@@ -1,4 +1,5 @@
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from sqlalchemy.orm import Session
 from models.job_embedding_model import JobEmbedding
 import json
@@ -6,12 +7,13 @@ from sqlalchemy import select
 from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
 from dotenv import load_dotenv
+from sentence_transformers import SentenceTransformer
 load_dotenv()
 
 class JobEmbeddingService:
     def __init__(self):
         # Initialize Google Embedding model
-        self.embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+        self.embeddings =SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
 
     def store_job_embeddings(self, db: Session, jobs: list):
         if not jobs:
@@ -26,7 +28,7 @@ class JobEmbeddingService:
                 continue
 
             # ✅ Generate embedding
-            vector = self.embeddings.embed_query(job_text)
+            vector = self.embeddings.encode(job_text, convert_to_numpy=True)
 
             # ✅ Store in DB
             job_vector_entry = JobEmbedding(
@@ -58,7 +60,7 @@ class JobEmbeddingService:
             return {"status": "error", "message": "Empty job data provided"}
 
         # 2️⃣ Generate job vector
-        job_vector = self.embeddings.embed_query(job_text)
+        job_vector = self.embeddings.encode(job_text, convert_to_numpy=True)
 
         # 3️⃣ Query resumes with similarity search
         stmt = (
