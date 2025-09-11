@@ -11,3 +11,4 @@ backend/**/__pycache__/
 venv/
 backend/job-match-env/
 backend/.env
+backend/dummy.py
