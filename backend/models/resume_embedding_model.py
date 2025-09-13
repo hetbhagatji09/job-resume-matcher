@@ -9,3 +9,6 @@ class ResumeEmbedding(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     resume_id = Column(Integer, ForeignKey("resumes.id"), nullable=False)
     resume_vector = Column(Vector(768))   # ✅ pgvector type
+    skill_vector= Column(Vector(768))
+    project_vector =Column(Vector(768))
+    exp_vector =Column(Vector(768))

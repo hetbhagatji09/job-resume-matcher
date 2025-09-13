@@ -46,6 +46,7 @@ class ResumeEmbeddingService:
         resume_text = f"""
         Skills: {skills}
         Projects: {projects}
+        Experience: {experience}
         Certifications: {certifications}
         """
 
@@ -53,13 +54,35 @@ class ResumeEmbeddingService:
             return {"status": "error", "message": "Empty resume text"}
 
         # Generate vector
-        vector = self.embeddings.encode(resume_text,convert_to_numpy=True)
+        vector = self.embeddings.encode(
+            resume_text,
+            convert_to_numpy=True,
+            normalize_embeddings=True
+        )
+        project_vector=self.embeddings.encode(
+            projects,
+            normalize_embeddings=True
+        )
+        exp_vector=self.embeddings.encode(
+            experience,
+            normalize_embeddings=True
+        )
+        skill_vector=self.embeddings.encode(
+            skills,
+            normalize_embeddings=True
+        )
+
 
         # Store in DB
         resume_vector_entry = ResumeEmbedding(
             resume_id=resume.id,
-            resume_vector=vector
+            resume_vector=vector,
+            skill_vector=skill_vector,
+            project_vector=project_vector,
+            exp_vector=exp_vector
+            
         )
+        
         db.add(resume_vector_entry)
         db.commit()
         print(f"✅ Stored resume embedding for {resume.name}")

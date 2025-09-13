@@ -8,6 +8,7 @@ from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
+import numpy as np
 load_dotenv()
 
 class JobEmbeddingService:
@@ -20,67 +21,107 @@ class JobEmbeddingService:
             return {"status": "error", "message": "No jobs provided"}
 
         for job in jobs:
-            # ✅ ORM objects → access attributes directly
             job_id = job.id
-            job_text = f"{job.job_role or ''} {job.job_location or ''} {job.job_experience or ''}"
+
+            # Build fields
+            role = job.job_role or ""
+            requirements = job.job_requirements or ""
+            responsibilities = job.job_responsibilities or ""
+            experience = job.job_experience or ""
+            overview = job.job_overview or ""
+
+            # Whole text
+            job_text = f"""
+                Role: {role}
+                Experience: {experience}
+                Responsibilities: {responsibilities}
+                Requirements: {requirements}
+                Overview: {overview}
+            """
 
             if not job_id or not job_text.strip():
                 continue
 
-            # ✅ Generate embedding
-            vector = self.embeddings.encode(job_text, convert_to_numpy=True)
+            # Encode
+            job_vector = self.embeddings.encode(job_text, convert_to_numpy=True, normalize_embeddings=True)
+            role_vector = self.embeddings.encode(role, convert_to_numpy=True, normalize_embeddings=True)
+            requirements_vector = self.embeddings.encode(requirements, convert_to_numpy=True, normalize_embeddings=True)
+            responsibilities_vector = (
+                self.embeddings.encode(responsibilities, convert_to_numpy=True, normalize_embeddings=True)
+                if responsibilities else None
+            )
+            exp_vector = self.embeddings.encode(experience, convert_to_numpy=True, normalize_embeddings=True)
 
-            # ✅ Store in DB
+            # Store
             job_vector_entry = JobEmbedding(
                 job_id=job_id,
-                job_vector=vector
+                job_vector=job_vector,
+                role_vector=role_vector,
+                requirements_vector=requirements_vector,
+                responsibilities_vector=responsibilities_vector,
+                exp_vector=exp_vector
             )
+
             db.add(job_vector_entry)
 
         db.commit()
         print("✅ Stored job embeddings")
+
         #return {"status": "success", "total_vectors": len(jobs)}
         
-    def match_resumes(self, db: Session, job_data: dict, top_k: int = 5):
+    def match_resumes(self, db: Session, job_id: int, top_k: int = 5):
         """
-        Generate embedding for a given job object (not yet in DB)
-        and return top_k most similar resumes
+        Compare a job (by job_id → JobEmbedding) to all resume embeddings.
+        Weighted scoring:
+        - requirements ↔ skills (0.4)
+        - responsibilities ↔ (exp+projects)/2 (0.3)
+        - exp ↔ exp (0.2)
+        - role ↔ resume (0.1)
         """
-        # 1️⃣ Build job text
-        job_text = f"""
-        Role: {job_data.get("job_role", "")}
-        Location: {job_data.get("job_location", "")}
-        Experience: {job_data.get("job_experience", "")}
-        Responsibilities: {job_data.get("job_responsibilities", "")}
-        Requirements: {job_data.get("job_requirements", "")}
-        Overview: {job_data.get("job_overview", "")}
-        """
+        # 1️⃣ Get the job embedding
+        job_embedding = db.query(JobEmbedding).filter(JobEmbedding.job_id == job_id).first()
+        if not job_embedding:
+            return {"status": "error", "message": f"No embeddings found for job_id {job_id}"}
 
-        if not job_text.strip():
-            return {"status": "error", "message": "Empty job data provided"}
+        # 2️⃣ Get all resumes
+        resumes = db.query(ResumeEmbedding).all()
+        results = []
 
-        # 2️⃣ Generate job vector
-        job_vector = self.embeddings.encode(job_text, convert_to_numpy=True)
+        # 3️⃣ Compute similarity scores
+        for resume in resumes:
+            skills_similarity = self.cosine_sim(job_embedding.requirements_vector, resume.skill_vector)
+            exp_similarity = self.cosine_sim(job_embedding.exp_vector, resume.exp_vector)
+            project_similarity = self.cosine_sim(job_embedding.responsibilities_vector, resume.project_vector)
+            role_similarity = self.cosine_sim(job_embedding.role_vector, resume.resume_vector)
 
-        # 3️⃣ Query resumes with similarity search
-        stmt = (
-            select(Resume, ResumeEmbedding.resume_vector.cosine_distance(job_vector).label("score"))
-            .join(ResumeEmbedding, Resume.id == ResumeEmbedding.resume_id)
-            .order_by("score")
-            .limit(top_k)
-        )
+            final_score = (
+                0.36 * skills_similarity +           # 0.4 / 1.1
+                0.36 * ((exp_similarity + project_similarity) / 2) +  # 0.4 / 1.1
+                0.18 * exp_similarity +              # 0.2 / 1.1
+                0.09 * role_similarity               # 0.1 / 1.1
+            )
 
-        results = db.execute(stmt).all()
+            results.append({
+                "resume_id": resume.resume_id,
+                "score": final_score,
+                "breakdown": {
+                "skills_similarity": skills_similarity,
+                "exp_similarity": exp_similarity,
+                "project_similarity": project_similarity,
+                "role_similarity": role_similarity
+            }
+        })
 
-        # 4️⃣ Format results
-        top_resumes = []
-        for resume, score in results:
-            top_resumes.append({
-                "resume_id": resume.id,
-                "name": resume.name,
-                "email": resume.email,
-                "phone": resume.phone,
-                "similarity_score": float(1 - score)  # convert distance → similarity
-            })
-
-        return {"status": "success", "matches": top_resumes}
+        # 4️⃣ Sort and return top_k
+        results = sorted(results, key=lambda x: x["score"], reverse=True)
+        return {"status": "success", "matches": results[:top_k]}
+    @staticmethod
+    def cosine_sim(vec1, vec2):
+        """Cosine similarity between two vectors (handle None gracefully)."""
+        if vec1 is None or vec2 is None:
+            return 0.0
+        v1 = np.array(vec1)
+        v2 = np.array(vec2)
+        if np.linalg.norm(v1) == 0 or np.linalg.norm(v2) == 0:
+            return 0.0
+        return float(np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))

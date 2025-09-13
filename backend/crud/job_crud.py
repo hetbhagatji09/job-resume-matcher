@@ -23,3 +23,9 @@ def create_jobs(db: Session, jobs: list[dict]):
         job_entries.append(create_job(db, j))
     db.commit()
     return job_entries
+def create_job(db, job_data: dict):
+    job = Job(**job_data)
+    db.add(job)
+    db.commit()
+    db.refresh(job)
+    return job
