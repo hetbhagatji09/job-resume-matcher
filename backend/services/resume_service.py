@@ -30,7 +30,7 @@ class ResumeService:
         """Extract structured resume info via LLM and store in DB"""
 
         # 1️⃣ Extract raw text
-        resume_text = self.extract_resume_text(file)
+        resume_text = self.extract_resume_text(file)    
 
         # 2️⃣ Build LLM prompt for structured info extraction
         prompt = PromptTemplate(

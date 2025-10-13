@@ -14,7 +14,7 @@ load_dotenv()
 class JobEmbeddingService:
     def __init__(self):
         # Initialize Google Embedding model
-        self.embeddings =SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
+        self.embeddings =SentenceTransformer("all-MiniLM-L6-v2")
 
     def store_job_embeddings(self, db: Session, jobs: list):
         if not jobs:
@@ -95,10 +95,9 @@ class JobEmbeddingService:
             role_similarity = self.cosine_sim(job_embedding.role_vector, resume.resume_vector)
 
             final_score = (
-                0.36 * skills_similarity +           # 0.4 / 1.1
-                0.36 * ((exp_similarity + project_similarity) / 2) +  # 0.4 / 1.1
-                0.18 * exp_similarity +              # 0.2 / 1.1
-                0.09 * role_similarity               # 0.1 / 1.1
+                0.5 * skills_similarity +           # 0.4 / 1.1
+                0.3 * (project_similarity) +  # 0.4 / 1.1
+                0.2 * exp_similarity            # 0.2 / 11
             )
 
             results.append({
@@ -107,8 +106,7 @@ class JobEmbeddingService:
                 "breakdown": {
                 "skills_similarity": skills_similarity,
                 "exp_similarity": exp_similarity,
-                "project_similarity": project_similarity,
-                "role_similarity": role_similarity
+                "project_similarity": project_similarity
             }
         })
 

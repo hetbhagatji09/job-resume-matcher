@@ -19,7 +19,7 @@ model = ChatGroq(
 class ResumeEmbeddingService:
     def __init__(self):
         # Use HuggingFace embeddings (local & free)
-        self.embeddings = SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
+        self.embeddings = SentenceTransformer("all-MiniLM-L6-v2")
 
     def store_resume_embedding(self, db: Session, resume: Resume):
         """
