@@ -15,7 +15,7 @@ model = ChatGroq(
     temperature=0.3,
     model_name="llama-3.1-8b-instant"
 )
-from utills.FineTuneModel import model
+from utills.hugmodel import model
 
 class ResumeEmbeddingService:
     def __init__(self):

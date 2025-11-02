@@ -8,7 +8,7 @@ from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
-from utills.FineTuneModel import model
+from utills.hugmodel import model
 load_dotenv()
 
 class JobEmbeddingService:
