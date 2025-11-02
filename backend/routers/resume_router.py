@@ -10,7 +10,7 @@ from langchain_core.output_parsers import JsonOutputParser
 import json
 from services.resume_embedding_service import ResumeEmbeddingService
 router = APIRouter(
-    prefix="/resume",
+    prefix="/resume",                                                                                                                              
     tags=["resumes"]
 )
 
@@ -32,6 +32,20 @@ async def extract_resume(file: UploadFile = File(...)):
 
 
 # Endpoint: Extract structured resume info and store in DB
+import json
+from fastapi import APIRouter, UploadFile, File, Depends
+# Assuming necessary imports like Session, get_db, Resume, etc. are defined elsewhere
+# from sqlalchemy.orm import Session
+# from app.database import get_db
+# from app.models import Resume
+# from app.services import service, embedding_service
+# from langchain.prompts import PromptTemplate
+# from langchain.llms import ... as model # Your LLM instance
+# from langchain.chains import LLMChain
+# from langchain.output_parsers import JsonOutputParser
+
+# router = APIRouter() # Assuming this is the router instance
+
 @router.post("/resume_obj", response_model=dict)
 async def extract_resume_obj(file: UploadFile = File(...), db: Session = Depends(get_db)):
     # 1️⃣ Extract raw text from PDF
@@ -47,7 +61,7 @@ async def extract_resume_obj(file: UploadFile = File(...), db: Session = Depends
     {resume}
 
     Return JSON with keys:
-    name, email, phone, skills, education, experience, projects,certifications
+    name, email, phone, skills, education, experience, projects, certifications
     """
     prompt = PromptTemplate(input_variables=["resume"], template=prompt_template)
     chain = LLMChain(llm=model, prompt=prompt)
@@ -55,32 +69,43 @@ async def extract_resume_obj(file: UploadFile = File(...), db: Session = Depends
     # 3️⃣ Get raw output from LLM
     raw_output = chain.run({"resume": resume_text[:6000]})  # Slice to prevent overflow
 
-    # 4️⃣ Parse JSON safely
+    # 4️⃣ Parse JSON safely (Updated logic for robustness)
     parser = JsonOutputParser()
+    
+    # Define a safe fallback dictionary
+    fallback_data = {
+        "name": None,
+        "email": None,
+        "phone": None,
+        "skills": [],         # Use empty lists for fields expected to be lists/arrays
+        "education": [],
+        "experience": [],
+        "projects": [],
+        "certifications": []
+    }
+    
     try:
-        data = parser.parse(raw_output)
+        # Attempt to parse the LLM output
+        parsed_data = parser.parse(raw_output)
+        
+        # Ensure parsed_data is a dictionary, otherwise use fallback
+        data = parsed_data if isinstance(parsed_data, dict) else fallback_data
+        
     except Exception:
-        # fallback in case LLM output is malformed
-        data = {
-            "name": None,
-            "email": None,
-            "phone": None,
-            "skills": None,
-            "education": None,
-            "experience": None,
-            "projects": None,
-            "certifications":None
-        }
+        # If parsing fails entirely, use the defined fallback
+        data = fallback_data
 
     # 5️⃣ Create Resume object with null-safe values
+    # The .get(key) method is now guaranteed to work because 'data' is always a dictionary.
+    # The (value or []) ensures that json.dumps receives a list if the key was missing or None.
     resume_obj = Resume(
         name=data.get("name"),
         email=data.get("email"),
         phone=data.get("phone"),
-        skills=json.dumps(data.get("skills") or []),        # Convert dict/list to string
+        skills=json.dumps(data.get("skills") or []),
         education=json.dumps(data.get("education") or []),
         experience=json.dumps(data.get("experience") or []),
-        projects=json.dumps(data.get("projects") or []),  # Keep commented if your model/table doesn’t have this
+        projects=json.dumps(data.get("projects") or []),
         certifications=json.dumps(data.get("certifications") or [])
     )
     
@@ -103,7 +128,7 @@ async def extract_resume_obj(file: UploadFile = File(...), db: Session = Depends
         "projects": resume_obj.projects,
         "certifications":resume_obj.certifications
     }
-
+    
 @router.post("/resume_test", response_model=dict)
 async def extract_resume_obj(file: UploadFile = File(...), db: Session = Depends(get_db)):
     # 1️⃣ Extract raw text from PDF

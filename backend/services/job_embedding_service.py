@@ -8,12 +8,13 @@ from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
+from utills.FineTuneModel import model
 load_dotenv()
 
 class JobEmbeddingService:
     def __init__(self):
         # Initialize Google Embedding model
-        self.embeddings =SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
+        self.embeddings =model
 
     def store_job_embeddings(self, db: Session, jobs: list):
         if not jobs:

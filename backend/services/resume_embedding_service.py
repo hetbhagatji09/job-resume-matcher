@@ -15,11 +15,12 @@ model = ChatGroq(
     temperature=0.3,
     model_name="llama-3.1-8b-instant"
 )
+from utills.FineTuneModel import model
 
 class ResumeEmbeddingService:
     def __init__(self):
         # Use HuggingFace embeddings (local & free)
-        self.embeddings = SentenceTransformer("shawhin/distilroberta-ai-job-embeddings")
+        self.embeddings = model
 
     def store_resume_embedding(self, db: Session, resume: Resume):
         """
