@@ -1,0 +1,31 @@
+job:
+  css: "div.job-right.job-details"
+  multiple: true
+  children:
+    title:
+      css: "div.job-title-row h5"
+      type: Text
+    overview:
+      css: "p[style*='margin-bottom: 4px'] + p"
+      type: Text
+    # We choose the whole wrapper as the text source and apply a regex to pick out the value after the label.
+    # experience:
+    #   css: "div.wpb_wrapper"
+    #   type: Text
+    #   regex: 'Experience:\s*"?\s*([^"]+?)(?=\s*(?:Location:|Position Overview:|Roles|Skills|$))'
+
+    # location:
+    #   css: "div.wpb_wrapper"
+    #   type: Text
+    #   regex: 'Location:\s*"?\s*([^"]+?)(?=\s*(?:Position Overview:|Roles|Skills|$))'
+
+
+    responsibilities:
+      css: "div.job-description ul.arrow-bullet:nth-of-type(1) li"
+      multiple: true
+      type: Text
+
+    required_skills:
+      css: "div.job-description ul.arrow-bullet:nth-of-type(2) li"
+      multiple: true
+      type: Text

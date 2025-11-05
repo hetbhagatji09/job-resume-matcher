@@ -19,3 +19,7 @@ sentence-transformers
 faiss-cpu
 numpy
 langchain-huggingface
+selectorlib
+lxml
+parsel
+requests
