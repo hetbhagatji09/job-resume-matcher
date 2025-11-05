@@ -1,6 +1,5 @@
 from sentence_transformers import SentenceTransformer
 model=SentenceTransformer("hetbhagatji09/Job-resume-match-model")
-print("Hello shruti mari")
 
 
 # --- Hard Triplet for Java Developer ---
