@@ -1,6 +1,3 @@
 {
-  "https://ignosis.ai/careers/": "motadata_careers_config.json",
-  "https://www.google.com/about/careers/applications/jobs/results/": "google_careers_config.json",
-  "https://infocusp.keka.com/careers/jobdetails/26712/": "infocusp_careers_config.json",
   "https://www.motadata.com/careers/":"motadata.yml"
 }
