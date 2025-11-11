@@ -6,7 +6,8 @@ from crud.job_crud import create_jobs
 from database import SessionLocal
 from services.job_embedding_service import JobEmbeddingService
 router = APIRouter()
-
+from fastapi import Path
+from models.job import Job 
 embedding_service = JobEmbeddingService()
 
 @router.get("/jobs")
@@ -38,3 +39,53 @@ async def match_resumes(
     Match resumes for a given job object
     """
     return embedding_service.match_resumes(db, job_data, top_k)
+@router.get("/job_text/{job_id}")
+def get_job_text(
+    job_id: int = Path(..., description="Job ID to get job text for"),
+    db: Session = Depends(get_db)
+):
+    """
+    Return the concatenated job_text for a given job_id
+    """
+    job = db.query(Job).filter(Job.id == job_id).first()
+
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    # Build the job_text (same as in JobEmbeddingService)
+    job_text = (
+        f"Job Title: {job.job_role or ''} "
+        f"Job Experience: {job.job_experience or ''} "
+        f"Job Overview: {job.job_overview or ''} "
+        f"Job Responsibilities: {job.job_responsibilities or ''} "
+        f"Job Requirements: {job.job_requirements or ''}"
+    )
+
+    return {"job_id": job.id, "job_text": job_text}
+@router.get("/match_resumes_by_job/{job_id}")
+def match_resumes_by_job(
+    job_id: int = Path(..., description="Job ID to match resumes for"),
+    top_k: int = Query(5, description="Number of top resumes to return"),
+    db: Session = Depends(get_db)
+):
+    """
+    Fetch a job by job_id and find the top_k best matching resumes for it
+    """
+    # 1️⃣ Fetch job from database
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+
+    # 2️⃣ Build job_data dictionary (same as expected by match_resumes)
+    job_data = {
+        "job_role": job.job_role,
+        "job_experience": job.job_experience,
+        "job_overview": job.job_overview,
+        "job_responsibilities": job.job_responsibilities,
+        "job_requirements": job.job_requirements
+    }
+
+    # 3️⃣ Use embedding service to find matching resumes
+    result = embedding_service.match_resumes(db, job_data, top_k)
+
+    return result

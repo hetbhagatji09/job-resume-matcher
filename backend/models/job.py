@@ -13,3 +13,4 @@ class Job(Base):
     job_overview= Column(Text,nullable=True)
     job_responsibilities= Column(Text,nullable=True)
     job_requirements= Column(Text,nullable=True)
+    salary=Column(Integer,nullable=True)

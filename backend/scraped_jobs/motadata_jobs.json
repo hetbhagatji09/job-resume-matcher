@@ -1,222 +1,220 @@
 {
   "site_name": "Motadata",
-  "scrape_time": "2025-11-06 01:25:32",
-  "total_jobs": 1,
-  "jobs": {
-    "job": [
-      {
-        "title": "Pre Sales Consultant",
-        "overview": "As a Presales Consultant at Motadata, you will be responsible for leading the presales team and collaborating with various departments to develop compelling proposals and solutions for our clients. You will play a pivotal role in understanding client requirements, shaping solutions, and ensuring seamless communication between the sales and delivery teams. The ideal candidate should have a strong technical background, excellent communication skills, and a proven track record of successful presales management.",
-        "responsibilities": [
-          "Collaborate with the sales team and Partners to understand customer requirements and propose technical solutions.",
-          "Conduct the discovery call, assessment of requirement and gather technical requirements from customer to tailor the solutions.",
-          "Provide product demonstrations and presentations to potential customers and Partners, both inperson and virtually.",
-          "Collaborate and Accomplishes sales by providing the required pre-sales technical support.",
-          "Answering technical compliance-related queries, analyzing the gaps, need for customization, analysis of the feasibility of required customization, and customization effort estimation.",
-          "Customer requirement gathering and documentation.",
-          "Prepare the Documentations like Solution Architecture, Technical Proposal, Solution Presentation, SOW, defining the solution USP, Prepare H/w sizing BOM and Software etc.",
-          "Setting up PoC (Proof of Concepts) as per customer requirement.",
-          "Stay updated with industry trends and competitor products to maintain a competitive advantage.",
-          "Assisting the development team in understanding the requirements and defining the scope/statement of work.",
-          "Engage in product training and continuously update knowledge of the company's offerings and associated technologies.",
-          "Improves product marketability by improving product packaging; coordinating new product development / integrating a suitable third-party product/solution.",
-          "Assist in the development of sales strategies and go-to-market plans.",
-          "Collaborate with the product development/ PMG team to relay customer feedback and assist in product improvement.",
-          "Attend the industry events, conferences, trade shows etc. to network and generate leads."
-        ],
-        "required_skills": [
-          "Should have worked with NMS or ITSM solutions (Solarwinds, WhatsUpGold, PRTG, Freshworks, ServiceNow, BMC etc.)",
-          "Should have experience in designing solution documents and proposals for NMS tenders.",
-          "Should have basic knowledge of Networking, Server, Application, Cloud, SDN and IOT technology.",
-          "Should have excellent communication and presentation skills both verbal and written.",
-          "At least should have a deep level understanding of any one of the areas of infrastructure from above.",
-          "Should have proven ability to build and maintain customer relationships.",
-          "Should have ability to work collaboratively in a team-oriented environment.",
-          "Should have willingness to travel as needed."
-        ]
-      },
-      {
-        "title": "Sr. Software Engineer (Java/GoLang)",
-        "overview": "We are seeking a highly skilled and motivated Senior Software Engineer proficient in Java, GoLang, to join our dynamic team. The ideal candidate will have extensive experience in designing, developing, and maintaining software products, demonstrating expertise across multiple programming languages and frameworks. This role offers the opportunity to work on challenging projects, collaborate with talented peers, and contribute to the advancement of our cutting-edge solutions.",
-        "responsibilities": [
-          "Design, develop, and maintain software products using Core Java, GoLang.",
-          "Implement Object-Oriented Programming (OOPs) principles effectively in core Java.",
-          "Utilize Go fundamentals including concurrency, logging, error handling, and dependency management to create robust solutions.",
-          "Adhere to industry best practices throughout the software development lifecycle, ensuring highquality deliverables.",
-          "Debug multithreading high-performance applications to identify and resolve issues promptly.",
-          "Utilize Java and Vertex, along with familiarity with message queue REST API architecture.",
-          "Participate in event-driven application development, leveraging relevant experience to enhance project outcomes.",
-          "Demonstrate proficiency in data structures and algorithms to optimize software performance.",
-          "Collaborate effectively within Agile or other product methodologies to deliver timely and innovative solutions.",
-          "Utilize version control systems such as Git and build systems like Jenkins, Maven, Gradle, TFS, or similar.",
-          "Implement instrumentation to gather business-specific metrics and insights into consumer usage patterns.",
-          "Develop Microservices with a strong understanding of AWS services including EC2, Lambda, S3, and CloudWatch.",
-          "Contribute to the team's understanding of API management platforms, design standards, patterns, and best practices."
-        ],
-        "required_skills": [
-          "Bachelor's or Master’s degree in Computer Science, Engineering, or related field.",
-          "4+ years of hands-on experience in software design and development using Core Java/GoLang.",
-          "Proficiency in implementing OOPs principles and design patterns in Java.",
-          "Solid understanding of Go fundamentals including concurrency, logging, and error handling.",
-          "Experience with debugging multithreading applications and optimizing performance.",
-          "Strong knowledge of data structures and algorithms.",
-          "Experience working within Agile or other product methodologies.",
-          "Familiarity with version control systems (e.g., Git) and build systems (e.g., Jenkins, Maven).",
-          "Experience developing Microservices on AWS infrastructure is a plus.",
-          "Excellent problem-solving skills and attention to detail.",
-          "Strong communication and collaboration abilities.",
-          "Ability to thrive in a fast-paced, collaborative environment."
-        ]
-      },
-      {
-        "title": "Software Engineer (Java)",
-        "overview": "We are in search of a talented and motivated Software Engineer, proficient in Java. This role presents an exciting opportunity for an individual passionate about software development to contribute to impactful projects, collaborate with experienced professionals, and enhance their skills in a dynamic work environment.",
-        "responsibilities": [
-          "Collaborate with Tech Leads to design, develop, and maintain software products using Java.",
-          "Apply foundational principles of Object-Oriented Programming (OOPs) in Java to deliver efficient and scalable solutions.",
-          "Assist in implementing Java fundamentals such as concurrency, logging, and error handling to contribute to robust codebases.",
-          "Follow industry-standard practices throughout the software development lifecycle, ensuring the delivery of high-quality software solutions.",
-          "Participate in debugging activities to identify and resolve issues in multithreaded applications promptly.",
-          "Utilize Java and Vert.x framework for event-driven application development.",
-          "Implement message queue architecture using Kafka for efficient data processing and communication.",
-          "Demonstrate proficiency in data structures and algorithms to optimize software performance.",
-          "Engage actively within Agile or similar product methodologies to deliver innovative solutions in a timely manner.",
-          "Utilize version control systems like Git and build systems such as Jenkins, Maven, or similar tools.",
-          "Assist in developing Microservices and gain exposure to AWS services like EC2, Lambda, S3, and CloudWatch.",
-          "Collaborate with the team to understand API management platforms, design standards, and best practices.",
-          "Above is a summary of expected role and responsibility and must not be considered as an exhaustive list of duties."
-        ],
-        "required_skills": [
-          "Bachelor’s or Master’s degree in Computer Science, Engineering, or related field.",
-          "2-4 years of hands-on experience in software design and development using Java.",
-          "Proficiency in applying OOPs principles and basic design patterns in Java.",
-          "Familiarity with Java fundamentals including concurrency, logging, and error handling is a plus.",
-          "Basic understanding of debugging techniques in multithreading applications.",
-          "Knowledge of data structures and algorithms.",
-          "Exposure to Agile or similar product development methodologies.",
-          "Familiarity with version control systems (e.g., Git) and build systems (e.g., Jenkins, Maven).",
-          "Experience with Kafka for message queue architecture.",
-          "Familiarity with Vert.x framework for event-driven application development is advantageous.",
-          "Experience with AWS services and Microservices architecture is advantageous.",
-          "Strong problem-solving skills and attention to detail.",
-          "Effective communication and collaboration abilities.",
-          "Ability to thrive in a fast-paced and collaborative environment."
-        ]
-      },
-      {
-        "title": "Senior BDE",
-        "overview": "As a key member of our revenue generation team, the Business Development Executive (BDE/SDR) will play  a pivotal role in generating and qualifying leads, building a robust pipeline of opportunities, and supporting the sales process. We are seeking a dynamic and motivated individual with outstanding communication skills and a strong drive to foster business growth.",
-        "responsibilities": [
-          "Conduct market studies and feasibility analyses to explore new markets within assigned regions/countries.",
-          "Build the sales pipeline by generating leads through personalized outreach to potential customers.",
-          "Utilize cold calling, email campaigns, and LinkedIn outreach to engage prospects.",
-          "Demonstrate proficiency with LinkedIn Sales Navigator and sales enablement tools such as Apollo.",
-          "Initiate the conversation with Inbound Leads and move them into the further Sales Funnel.",
-          "Manage Channel Partner generated Leads and support them to drive the closures.",
-          "Design and implement communication sequences aligned with the sales process, from initial outreach to scheduling demos.",
-          "Monitor and manage the entire sales lifecycle, from lead generation to closure.",
-          "Foster relationships with prospects who drop off or are in the early stages, nurturing future business opportunities.",
-          "Ensure lead quality by identifying and engaging with key decision-makers based on established qualification criteria.",
-          "Coordinate with stakeholders and cross-functional teams as needed.",
-          "Track and analyze KPIs and performance metrics regularly.",
-          "Constant Follow-up to relevant teams for Lead status and Inbound Leads.",
-          "Stay updated on product knowledge, industry trends, competitor activities, and market demands."
-        ],
-        "required_skills": [
-          "Master's degree in marketing, International Business, or a related field.",
-          "Minimum of 4 years of experience in Sales or Business Development within the B2B Technology sector.",
-          "Ability to thrive in a fast-paced and dynamic environment.",
-          "Proven expertise in CRM ecosystems such as Zoho, HubSpot, Salesforce, and similar platforms.",
-          "Exceptional communication skills, both verbal and written.",
-          "Strong organizational and time management abilities.",
-          "Strong written and verbal communication skills to influence non-technical audiences with analytical insights and data visualizations.",
-          "This role is based in Ahmedabad (Work from Office)."
-        ]
-      },
-      {
-        "title": "Customer Onboarding Engineer",
-        "overview": "As a Customer Onboarding Engineer, you will play a crucial role in the successful deployment of our products and solutions for clients. You will collaborate with cross-functional teams, understand client requirements, and ensure seamless integration and implementation of our technology solutions. The ideal candidate should have a strong technical background, excellent problem-solving skills, and the ability to communicate effectively with both technical and non-technical stakeholders.",
-        "responsibilities": [
-          "You need to provide technical guidance/training and customerservice for our clients.",
-          "You will learn quickly and adapt to changes. You will maintain a high sense of urgency while staying cool under pressure.",
-          "Coordinate with Business Analyst or Engineering team forsolution development.",
-          "Handling integration of proposed solutions with the existing hardware setup, legacy systems, and third-party applications.",
-          "Flexible travel as perthe project requirement.",
-          "Should have good command on network protocols (BGP, MPLS,OSPF, SNMP, SMTP etc..) and  troubleshooting techniques.",
-          "Excellentwritten and verbal English communication skills.",
-          "Drive the implementation activity as perthe agreed timeline and budget.",
-          "Build rapport with clients.",
-          "Interface withNetwork Implementation and Engineering as necessary to support ongoing.",
-          "Network activities.",
-          "ProductInstallations and configuration (Onsite or Remotely)",
-          "ConductProduct Training to client",
-          "Providing proper handover tosupportteam forsmooth operations.",
-          "Publishweekly projectstatus to internal and externalstakeholders."
-        ],
-        "required_skills": [
-          "Soundknowledge about SNMP, TRAP, and networking protocols.",
-          "Linux Certification.",
-          "Hands-onmiddleware, web server, database,router, and switch will be an added advantage.",
-          "You should be able to understand customer requirements and translate the same in solutions.",
-          "Should have experience inapplication deploymentin Linux servers with WEB andDatabase.",
-          "Application set up with defaultdata configuration.",
-          "Linux,Windows, and networking knowledge along withweb server and database.",
-          "Excellent verbal andwritten communication skills.",
-          "Sound in client coordination and presentation.",
-          "Bachelor’s degree in computer science, Engineering, or equivalent demonstrated IT work.",
-          "Quick problem-solving ability.",
-          "Understand client’srequirements & their current processes.",
-          "DriveUser Acceptance Test(UAT) with client and getsign-off done for project closure."
-        ]
-      },
-      {
-        "title": "Customer Experience Engineer",
-        "overview": "We are seeking a skilled and proactive Customer Experience/Support Engineer to join our team. The successful candidate will be responsible for providing technical support to customers, ensuring that issues are resolved efficiently through our ITSM ticket system while adhering to customer SLAs. This role requires a strong understanding of application technical support, as well as experience with Linux, networking, and virtual environments.",
-        "responsibilities": [
-          "Providing technical support to customers.",
-          "Customer issue resolution through ITSM, Ticket system.",
-          "Ensure Customer SLA are adhered.",
-          "Work with team and ensure healthy, progressive environment in team.",
-          "Ensure customer Satisfaction is achieved through defined Criteria.",
-          "Ensure proper RCA, Documents are prepared and maintained."
-        ],
-        "required_skills": [
-          "Experience in working with Application Technical Support.",
-          "Ability to quickly understand, analyze customer issue.",
-          "Experience working with Linux, Networking, Virtual Environment.",
-          "Good Verbal Communication skills.",
-          "Ability to analyze logs files, networking, database issues using Linux , Networking or Windows Commands.",
-          "Positive Attitude."
-        ]
-      },
-      {
-        "title": "Lead ML Engineer",
-        "overview": "As a Machine Learning Engineer, you will play a crucial role in the development and implementation of cutting-edge artificial intelligence products. Your responsibilities will involve designing and constructing sophisticated machine learning models, as well as refining and updating existing systems.",
-        "responsibilities": [
-          "Study and transform data science prototypes.",
-          "Design machine learning systems.",
-          "Research and implement appropriate ML algorithms and tools.",
-          "Develop machine learning applications according to requirements.",
-          "Select appropriate datasets and data representation methods.",
-          "Run machine learning tests and experiments.",
-          "Perform statistical analysis and fine-tuning using test results.",
-          "Train and retrain systems when necessary.",
-          "Extend existing ML libraries and frameworks.",
-          "Keep abreast of developments in the field.",
-          "Build & lead a research team of 3-4 people."
-        ],
-        "required_skills": [
-          "Proven experience as a Machine Learning Engineer or similar role.",
-          "Understanding of data structures, data modeling and software architecture.",
-          "Deep knowledge of math, probability, statistics, and algorithms.",
-          "Ability to write robust code in .NET, Java, and R.",
-          "Familiarity with machine learning frameworks (ML.NET, Deeplearning4j, and TensorFlow).",
-          "Excellent communication skills.",
-          "Ability to build and lead a team.",
-          "Outstanding analytical and problem-solving skills.",
-          "BSc in Computer Science, Mathematics, or a similar field; a Master’s degree is a plus."
-        ]
-      }
-    ]
-  }
+  "scrape_time": "2025-11-11 19:32:28",
+  "total_jobs": 7,
+  "jobs": [
+    {
+      "job_role": "Pre Sales Consultant",
+      "job_overview": "As a Presales Consultant at Motadata, you will be responsible for leading the presales team and collaborating with various departments to develop compelling proposals and solutions for our clients. You will play a pivotal role in understanding client requirements, shaping solutions, and ensuring seamless communication between the sales and delivery teams. The ideal candidate should have a strong technical background, excellent communication skills, and a proven track record of successful presales management.",
+      "job_responsibilities": [
+        "Collaborate with the sales team and Partners to understand customer requirements and propose technical solutions.",
+        "Conduct the discovery call, assessment of requirement and gather technical requirements from customer to tailor the solutions.",
+        "Provide product demonstrations and presentations to potential customers and Partners, both inperson and virtually.",
+        "Collaborate and Accomplishes sales by providing the required pre-sales technical support.",
+        "Answering technical compliance-related queries, analyzing the gaps, need for customization, analysis of the feasibility of required customization, and customization effort estimation.",
+        "Customer requirement gathering and documentation.",
+        "Prepare the Documentations like Solution Architecture, Technical Proposal, Solution Presentation, SOW, defining the solution USP, Prepare H/w sizing BOM and Software etc.",
+        "Setting up PoC (Proof of Concepts) as per customer requirement.",
+        "Stay updated with industry trends and competitor products to maintain a competitive advantage.",
+        "Assisting the development team in understanding the requirements and defining the scope/statement of work.",
+        "Engage in product training and continuously update knowledge of the company's offerings and associated technologies.",
+        "Improves product marketability by improving product packaging; coordinating new product development / integrating a suitable third-party product/solution.",
+        "Assist in the development of sales strategies and go-to-market plans.",
+        "Collaborate with the product development/ PMG team to relay customer feedback and assist in product improvement.",
+        "Attend the industry events, conferences, trade shows etc. to network and generate leads."
+      ],
+      "job_requirements": [
+        "Should have worked with NMS or ITSM solutions (Solarwinds, WhatsUpGold, PRTG, Freshworks, ServiceNow, BMC etc.)",
+        "Should have experience in designing solution documents and proposals for NMS tenders.",
+        "Should have basic knowledge of Networking, Server, Application, Cloud, SDN and IOT technology.",
+        "Should have excellent communication and presentation skills both verbal and written.",
+        "At least should have a deep level understanding of any one of the areas of infrastructure from above.",
+        "Should have proven ability to build and maintain customer relationships.",
+        "Should have ability to work collaboratively in a team-oriented environment.",
+        "Should have willingness to travel as needed."
+      ]
+    },
+    {
+      "job_role": "Sr. Software Engineer (Java/GoLang)",
+      "job_overview": "We are seeking a highly skilled and motivated Senior Software Engineer proficient in Java, GoLang, to join our dynamic team. The ideal candidate will have extensive experience in designing, developing, and maintaining software products, demonstrating expertise across multiple programming languages and frameworks. This role offers the opportunity to work on challenging projects, collaborate with talented peers, and contribute to the advancement of our cutting-edge solutions.",
+      "job_responsibilities": [
+        "Design, develop, and maintain software products using Core Java, GoLang.",
+        "Implement Object-Oriented Programming (OOPs) principles effectively in core Java.",
+        "Utilize Go fundamentals including concurrency, logging, error handling, and dependency management to create robust solutions.",
+        "Adhere to industry best practices throughout the software development lifecycle, ensuring highquality deliverables.",
+        "Debug multithreading high-performance applications to identify and resolve issues promptly.",
+        "Utilize Java and Vertex, along with familiarity with message queue REST API architecture.",
+        "Participate in event-driven application development, leveraging relevant experience to enhance project outcomes.",
+        "Demonstrate proficiency in data structures and algorithms to optimize software performance.",
+        "Collaborate effectively within Agile or other product methodologies to deliver timely and innovative solutions.",
+        "Utilize version control systems such as Git and build systems like Jenkins, Maven, Gradle, TFS, or similar.",
+        "Implement instrumentation to gather business-specific metrics and insights into consumer usage patterns.",
+        "Develop Microservices with a strong understanding of AWS services including EC2, Lambda, S3, and CloudWatch.",
+        "Contribute to the team's understanding of API management platforms, design standards, patterns, and best practices."
+      ],
+      "job_requirements": [
+        "Bachelor's or Master’s degree in Computer Science, Engineering, or related field.",
+        "4+ years of hands-on experience in software design and development using Core Java/GoLang.",
+        "Proficiency in implementing OOPs principles and design patterns in Java.",
+        "Solid understanding of Go fundamentals including concurrency, logging, and error handling.",
+        "Experience with debugging multithreading applications and optimizing performance.",
+        "Strong knowledge of data structures and algorithms.",
+        "Experience working within Agile or other product methodologies.",
+        "Familiarity with version control systems (e.g., Git) and build systems (e.g., Jenkins, Maven).",
+        "Experience developing Microservices on AWS infrastructure is a plus.",
+        "Excellent problem-solving skills and attention to detail.",
+        "Strong communication and collaboration abilities.",
+        "Ability to thrive in a fast-paced, collaborative environment."
+      ]
+    },
+    {
+      "job_role": "Software Engineer (Java)",
+      "job_overview": "We are in search of a talented and motivated Software Engineer, proficient in Java. This role presents an exciting opportunity for an individual passionate about software development to contribute to impactful projects, collaborate with experienced professionals, and enhance their skills in a dynamic work environment.",
+      "job_responsibilities": [
+        "Collaborate with Tech Leads to design, develop, and maintain software products using Java.",
+        "Apply foundational principles of Object-Oriented Programming (OOPs) in Java to deliver efficient and scalable solutions.",
+        "Assist in implementing Java fundamentals such as concurrency, logging, and error handling to contribute to robust codebases.",
+        "Follow industry-standard practices throughout the software development lifecycle, ensuring the delivery of high-quality software solutions.",
+        "Participate in debugging activities to identify and resolve issues in multithreaded applications promptly.",
+        "Utilize Java and Vert.x framework for event-driven application development.",
+        "Implement message queue architecture using Kafka for efficient data processing and communication.",
+        "Demonstrate proficiency in data structures and algorithms to optimize software performance.",
+        "Engage actively within Agile or similar product methodologies to deliver innovative solutions in a timely manner.",
+        "Utilize version control systems like Git and build systems such as Jenkins, Maven, or similar tools.",
+        "Assist in developing Microservices and gain exposure to AWS services like EC2, Lambda, S3, and CloudWatch.",
+        "Collaborate with the team to understand API management platforms, design standards, and best practices.",
+        "Above is a summary of expected role and responsibility and must not be considered as an exhaustive list of duties."
+      ],
+      "job_requirements": [
+        "Bachelor’s or Master’s degree in Computer Science, Engineering, or related field.",
+        "2-4 years of hands-on experience in software design and development using Java.",
+        "Proficiency in applying OOPs principles and basic design patterns in Java.",
+        "Familiarity with Java fundamentals including concurrency, logging, and error handling is a plus.",
+        "Basic understanding of debugging techniques in multithreading applications.",
+        "Knowledge of data structures and algorithms.",
+        "Exposure to Agile or similar product development methodologies.",
+        "Familiarity with version control systems (e.g., Git) and build systems (e.g., Jenkins, Maven).",
+        "Experience with Kafka for message queue architecture.",
+        "Familiarity with Vert.x framework for event-driven application development is advantageous.",
+        "Experience with AWS services and Microservices architecture is advantageous.",
+        "Strong problem-solving skills and attention to detail.",
+        "Effective communication and collaboration abilities.",
+        "Ability to thrive in a fast-paced and collaborative environment."
+      ]
+    },
+    {
+      "job_role": "Senior BDE",
+      "job_overview": "As a key member of our revenue generation team, the Business Development Executive (BDE/SDR) will play  a pivotal role in generating and qualifying leads, building a robust pipeline of opportunities, and supporting the sales process. We are seeking a dynamic and motivated individual with outstanding communication skills and a strong drive to foster business growth.",
+      "job_responsibilities": [
+        "Conduct market studies and feasibility analyses to explore new markets within assigned regions/countries.",
+        "Build the sales pipeline by generating leads through personalized outreach to potential customers.",
+        "Utilize cold calling, email campaigns, and LinkedIn outreach to engage prospects.",
+        "Demonstrate proficiency with LinkedIn Sales Navigator and sales enablement tools such as Apollo.",
+        "Initiate the conversation with Inbound Leads and move them into the further Sales Funnel.",
+        "Manage Channel Partner generated Leads and support them to drive the closures.",
+        "Design and implement communication sequences aligned with the sales process, from initial outreach to scheduling demos.",
+        "Monitor and manage the entire sales lifecycle, from lead generation to closure.",
+        "Foster relationships with prospects who drop off or are in the early stages, nurturing future business opportunities.",
+        "Ensure lead quality by identifying and engaging with key decision-makers based on established qualification criteria.",
+        "Coordinate with stakeholders and cross-functional teams as needed.",
+        "Track and analyze KPIs and performance metrics regularly.",
+        "Constant Follow-up to relevant teams for Lead status and Inbound Leads.",
+        "Stay updated on product knowledge, industry trends, competitor activities, and market demands."
+      ],
+      "job_requirements": [
+        "Master's degree in marketing, International Business, or a related field.",
+        "Minimum of 4 years of experience in Sales or Business Development within the B2B Technology sector.",
+        "Ability to thrive in a fast-paced and dynamic environment.",
+        "Proven expertise in CRM ecosystems such as Zoho, HubSpot, Salesforce, and similar platforms.",
+        "Exceptional communication skills, both verbal and written.",
+        "Strong organizational and time management abilities.",
+        "Strong written and verbal communication skills to influence non-technical audiences with analytical insights and data visualizations.",
+        "This role is based in Ahmedabad (Work from Office)."
+      ]
+    },
+    {
+      "job_role": "Customer Onboarding Engineer",
+      "job_overview": "As a Customer Onboarding Engineer, you will play a crucial role in the successful deployment of our products and solutions for clients. You will collaborate with cross-functional teams, understand client requirements, and ensure seamless integration and implementation of our technology solutions. The ideal candidate should have a strong technical background, excellent problem-solving skills, and the ability to communicate effectively with both technical and non-technical stakeholders.",
+      "job_responsibilities": [
+        "You need to provide technical guidance/training and customerservice for our clients.",
+        "You will learn quickly and adapt to changes. You will maintain a high sense of urgency while staying cool under pressure.",
+        "Coordinate with Business Analyst or Engineering team forsolution development.",
+        "Handling integration of proposed solutions with the existing hardware setup, legacy systems, and third-party applications.",
+        "Flexible travel as perthe project requirement.",
+        "Should have good command on network protocols (BGP, MPLS,OSPF, SNMP, SMTP etc..) and  troubleshooting techniques.",
+        "Excellentwritten and verbal English communication skills.",
+        "Drive the implementation activity as perthe agreed timeline and budget.",
+        "Build rapport with clients.",
+        "Interface withNetwork Implementation and Engineering as necessary to support ongoing.",
+        "Network activities.",
+        "ProductInstallations and configuration (Onsite or Remotely)",
+        "ConductProduct Training to client",
+        "Providing proper handover tosupportteam forsmooth operations.",
+        "Publishweekly projectstatus to internal and externalstakeholders."
+      ],
+      "job_requirements": [
+        "Soundknowledge about SNMP, TRAP, and networking protocols.",
+        "Linux Certification.",
+        "Hands-onmiddleware, web server, database,router, and switch will be an added advantage.",
+        "You should be able to understand customer requirements and translate the same in solutions.",
+        "Should have experience inapplication deploymentin Linux servers with WEB andDatabase.",
+        "Application set up with defaultdata configuration.",
+        "Linux,Windows, and networking knowledge along withweb server and database.",
+        "Excellent verbal andwritten communication skills.",
+        "Sound in client coordination and presentation.",
+        "Bachelor’s degree in computer science, Engineering, or equivalent demonstrated IT work.",
+        "Quick problem-solving ability.",
+        "Understand client’srequirements & their current processes.",
+        "DriveUser Acceptance Test(UAT) with client and getsign-off done for project closure."
+      ]
+    },
+    {
+      "job_role": "Customer Experience Engineer",
+      "job_overview": "We are seeking a skilled and proactive Customer Experience/Support Engineer to join our team. The successful candidate will be responsible for providing technical support to customers, ensuring that issues are resolved efficiently through our ITSM ticket system while adhering to customer SLAs. This role requires a strong understanding of application technical support, as well as experience with Linux, networking, and virtual environments.",
+      "job_responsibilities": [
+        "Providing technical support to customers.",
+        "Customer issue resolution through ITSM, Ticket system.",
+        "Ensure Customer SLA are adhered.",
+        "Work with team and ensure healthy, progressive environment in team.",
+        "Ensure customer Satisfaction is achieved through defined Criteria.",
+        "Ensure proper RCA, Documents are prepared and maintained."
+      ],
+      "job_requirements": [
+        "Experience in working with Application Technical Support.",
+        "Ability to quickly understand, analyze customer issue.",
+        "Experience working with Linux, Networking, Virtual Environment.",
+        "Good Verbal Communication skills.",
+        "Ability to analyze logs files, networking, database issues using Linux , Networking or Windows Commands.",
+        "Positive Attitude."
+      ]
+    },
+    {
+      "job_role": "Lead ML Engineer",
+      "job_overview": "As a Machine Learning Engineer, you will play a crucial role in the development and implementation of cutting-edge artificial intelligence products. Your responsibilities will involve designing and constructing sophisticated machine learning models, as well as refining and updating existing systems.",
+      "job_responsibilities": [
+        "Study and transform data science prototypes.",
+        "Design machine learning systems.",
+        "Research and implement appropriate ML algorithms and tools.",
+        "Develop machine learning applications according to requirements.",
+        "Select appropriate datasets and data representation methods.",
+        "Run machine learning tests and experiments.",
+        "Perform statistical analysis and fine-tuning using test results.",
+        "Train and retrain systems when necessary.",
+        "Extend existing ML libraries and frameworks.",
+        "Keep abreast of developments in the field.",
+        "Build & lead a research team of 3-4 people."
+      ],
+      "job_requirements": [
+        "Proven experience as a Machine Learning Engineer or similar role.",
+        "Understanding of data structures, data modeling and software architecture.",
+        "Deep knowledge of math, probability, statistics, and algorithms.",
+        "Ability to write robust code in .NET, Java, and R.",
+        "Familiarity with machine learning frameworks (ML.NET, Deeplearning4j, and TensorFlow).",
+        "Excellent communication skills.",
+        "Ability to build and lead a team.",
+        "Outstanding analytical and problem-solving skills.",
+        "BSc in Computer Science, Mathematics, or a similar field; a Master’s degree is a plus."
+      ]
+    }
+  ]
 }

@@ -23,3 +23,8 @@ selectorlib
 lxml
 parsel
 requests
+playwright
+nlp
+chromium
+
+

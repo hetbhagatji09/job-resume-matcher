@@ -23,7 +23,14 @@ class JobEmbeddingService:
         for job in jobs:
             # ✅ ORM objects → access attributes directly
             job_id = job.id
-            job_text = f"{job.job_role or ''} {job.job_location or ''} {job.job_experience or ''}"
+            job_text = (
+                f"Job Title: {job.job_role or ''} "
+                f"Job Experience: {job.job_experience or ''} "
+                f"Job Overview: {job.job_overview or ''} "
+                f"Job Responsibilities: {job.job_responsibilities or ''} "
+                f"Job Requirements: {job.job_requirements or ''}"
+            )
+
 
             if not job_id or not job_text.strip():
                 continue
@@ -50,11 +57,10 @@ class JobEmbeddingService:
         # 1️⃣ Build job text
         job_text = f"""
         Role: {job_data.get("job_role", "")}
-        Location: {job_data.get("job_location", "")}
+        Overview: {job_data.get("job_overview", "")}
         Experience: {job_data.get("job_experience", "")}
         Responsibilities: {job_data.get("job_responsibilities", "")}
         Requirements: {job_data.get("job_requirements", "")}
-        Overview: {job_data.get("job_overview", "")}
         """
 
         if not job_text.strip():

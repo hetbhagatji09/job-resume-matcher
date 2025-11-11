@@ -45,9 +45,11 @@ class ResumeEmbeddingService:
 
         # Build a meaningful string for embeddings
         resume_text = f"""
-        Skills: {skills}
-        Projects: {projects}
-        Certifications: {certifications}
+        {experience}
+        {skills}
+        {projects}
+        {certifications}
+        {education}
         """
 
         if not resume_text.strip():
