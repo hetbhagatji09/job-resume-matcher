@@ -1,0 +1,23 @@
+job:
+  css: "div#content"
+  multiple: false
+  children:
+    job_role:
+      css: "div.intro-section-innerpage h1.page-title"
+      type: Text
+
+
+    job_experience:
+      css: "div.intro-section-innerpage p.h3"
+      type: Text
+    
+    job_overview:
+      css: "div.entry-content h4.wp-block-heading:contains('Job Overview') + p"
+      type: Text
+    job_responsibilities:
+      css: "div.entry-content h4.wp-block-heading:contains('Key Responsibilities') + ul"
+      type: Text
+
+    job_requirements:
+      css: "div.entry-content h4.wp-block-heading:contains('Desired Profile') + ul"
+      type: Text
