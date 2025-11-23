@@ -1,44 +1,32 @@
-from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from sqlalchemy.orm import Session
-from langchain_community.embeddings import HuggingFaceEmbeddings
+import json
+import re
+
 from models.resume_embedding_model import ResumeEmbedding
 from models.resume_model import Resume
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-from langchain_groq import ChatGroq
-from dotenv import load_dotenv
-import re
-import json
 
-from services.nltk_service import TextCleaningService 
-# Load environment variables
-load_dotenv()
+from utills.hugmodel import model   # your HuggingFace embedding model
+from services.nltk_service import TextCleaningService
 
-# Initialize Groq model (LLaMA 3.1)
-llm = ChatGroq(
-    temperature=0.3,
-    model_name="llama-3.1-8b-instant"
-)
+# Initialize text cleaner
+cleaner = TextCleaningService()
 
-# Import your huggingface embedding model from utils
-from utills.hugmodel import model
-
-cleaner=TextCleaningService()
 
 class ResumeEmbeddingService:
     def __init__(self):
-        # Initialize embeddings model (local)
+        # Load local HF embedding model
         self.embeddings = model
 
     def store_resume_embedding(self, db: Session, resume: Resume):
         """
-        Generate and store embedding for a single resume
-        after cleaning all unwanted symbols/brackets for better embedding quality
+        Generate section-wise embeddings for a resume.
+        Clean every field, convert JSON to text, and store 5 vectors.
         """
+
         if not resume:
             return {"status": "error", "message": "No resume provided"}
 
-        # --- Helper to safely convert JSON/text fields ---
+        # ---------- Safe JSON Loader ----------
         def safe_load(val):
             try:
                 loaded = json.loads(val)
@@ -51,46 +39,49 @@ class ResumeEmbeddingService:
             except:
                 return str(val or "")
 
-        # --- Extract fields ---
-        skills = safe_load(resume.skills)
-        education = safe_load(resume.education)
-        experience = safe_load(resume.experience)
-        projects = safe_load(resume.projects)
-        certifications = safe_load(resume.certifications)
+        # ---------- Extract raw text fields ----------
+        raw_skills = safe_load(resume.skills)
+        raw_education = safe_load(resume.education)
+        raw_experience = safe_load(resume.experience)
+        raw_projects = safe_load(resume.projects)
+        raw_certifications = safe_load(resume.certifications)
 
-        # --- Combine all text fields ---
-        resume_text = (
-            str(skills).replace("{"," ").replace("}"," ").replace("["," ").replace("]"," ").replace("\""," ").replace("'"," ").replace("\\"," ")
-            + " " +
-            str(experience).replace("{"," ").replace("}"," ").replace("["," ").replace("]"," ").replace("\""," ").replace("'"," ").replace("\\"," ")
-            + " " +
-            str(projects).replace("{"," ").replace("}"," ").replace("["," ").replace("]"," ").replace("\""," ").replace("'"," ").replace("\\"," ")
-            + " " +
-            str(certifications).replace("{"," ").replace("}"," ").replace("["," ").replace("]"," ").replace("\""," ").replace("'"," ").replace("\\"," ")
-            + " " +
-            str(education).replace("{"," ").replace("}"," ").replace("["," ").replace("]"," ").replace("\""," ").replace("'"," ").replace("\\"," ")
-        )
+        # ---------- Clean each section ----------
+        skills_text = cleaner.clean(raw_skills)
+        education_text = cleaner.clean(raw_education)
+        experience_text = cleaner.clean(raw_experience)
+        projects_text = cleaner.clean(raw_projects)
+        certifications_text = cleaner.clean(raw_certifications)
 
-        # --- 🧹 Clean the text ---
-       
-        
-        clean_text = re.sub(r"\s+", " ", resume_text).strip()  # collapse multiple spaces
-        clean_text=cleaner.clean(clean_text)
-        print(clean_text)
+        # If everything is empty → skip
+        combined = (
+            skills_text + education_text + experience_text +
+            projects_text + certifications_text
+        ).strip()
 
-        if not clean_text:
-            return {"status": "error", "message": "Empty cleaned resume text"}
+        if not combined:
+            return {"status": "error", "message": "Empty resume data"}
 
-        # --- ✅ Generate vector ---
-        vector = self.embeddings.encode(clean_text, convert_to_numpy=True)
+        # ---------- Encode each section ----------
+        skills_vec = self.embeddings.encode(skills_text, convert_to_numpy=True) if skills_text else None
+        education_vec = self.embeddings.encode(education_text, convert_to_numpy=True) if education_text else None
+        experience_vec = self.embeddings.encode(experience_text, convert_to_numpy=True) if experience_text else None
+        projects_vec = self.embeddings.encode(projects_text, convert_to_numpy=True) if projects_text else None
+        certifications_vec = self.embeddings.encode(certifications_text, convert_to_numpy=True) if certifications_text else None
 
-        # --- ✅ Store in DB ---
+        # ---------- Save to Database ----------
         resume_vector_entry = ResumeEmbedding(
             resume_id=resume.id,
-            resume_vector=vector
+            skills_vector=skills_vec,
+            education_vector=education_vec,
+            experience_vector=experience_vec,
+            projects_vector=projects_vec,
+            certifications_vector=certifications_vec
         )
+
         db.add(resume_vector_entry)
         db.commit()
 
-        print(f"✅ Stored clean resume embedding for {resume.name}")
+        print(f"✅ Stored section-wise resume embeddings for {resume.name}")
+
         return {"status": "success", "resume_id": resume.id}

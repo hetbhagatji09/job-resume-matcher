@@ -7,8 +7,15 @@ class JobEmbedding(Base):
     __tablename__ = "job_embeddings"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    job_id = Column(Integer, ForeignKey("jobs.id"), nullable=False)
-    job_vector = Column(Vector(384))   # ✅ pgvector type
 
-    # Optional relationship if you want
-    # job = relationship("Job", back_populates="embedding")
+    job_id = Column(Integer, ForeignKey("jobs.id"), nullable=False)
+
+    # --- Separate vectors for each attribute ---
+    job_role_vector = Column(Vector(384), nullable=True)
+    job_experience_vector = Column(Vector(384), nullable=True)
+    job_overview_vector = Column(Vector(384), nullable=True)
+    job_responsibilities_vector = Column(Vector(384), nullable=True)
+    job_requirements_vector = Column(Vector(384), nullable=True)
+
+    # Optional relationship
+    job = relationship("Job")
