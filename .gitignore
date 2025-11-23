@@ -12,3 +12,4 @@ venv/
 backend/job-match-env/
 backend/.env
 backend/dummy.py
+backend/scraped_jobs/
