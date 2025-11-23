@@ -28,5 +28,7 @@ nlp
 chromium
 spacy
 datasets
+nltk
+unicodedata2
 
 

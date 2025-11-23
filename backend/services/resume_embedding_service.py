@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 import re
 import json
 
+from services.nltk_service import TextCleaningService 
 # Load environment variables
 load_dotenv()
 
@@ -22,6 +23,7 @@ llm = ChatGroq(
 # Import your huggingface embedding model from utils
 from utills.hugmodel import model
 
+cleaner=TextCleaningService()
 
 class ResumeEmbeddingService:
     def __init__(self):
@@ -73,6 +75,7 @@ class ResumeEmbeddingService:
        
         
         clean_text = re.sub(r"\s+", " ", resume_text).strip()  # collapse multiple spaces
+        clean_text=cleaner.clean(clean_text)
         print(clean_text)
 
         if not clean_text:
