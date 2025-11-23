@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from utills.hugmodel import model
 load_dotenv()
-
+from services.nltk_service import TextCleaningService
+cleaner=TextCleaningService()
 class JobEmbeddingService:
     def __init__(self):
         # Initialize Google Embedding model
@@ -24,12 +25,14 @@ class JobEmbeddingService:
             # ✅ ORM objects → access attributes directly
             job_id = job.id
             job_text = (
-                f"Job Title: {job.job_role or ''} "
-                f"Job Experience: {job.job_experience or ''} "
-                f"Job Overview: {job.job_overview or ''} "
-                f"Job Responsibilities: {job.job_responsibilities or ''} "
-                f"Job Requirements: {job.job_requirements or ''}"
+                str(job.job_role or "") + " " +
+                str(job.job_experience or "") + " " +
+                str(job.job_overview or "") + " " +
+                str(job.job_responsibilities or "") + " " +
+                str(job.job_requirements or "")
             )
+
+            job_text=cleaner.clean(job_text)
 
 
             if not job_id or not job_text.strip():
