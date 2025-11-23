@@ -26,5 +26,7 @@ requests
 playwright
 nlp
 chromium
+spacy
+datasets
 
 

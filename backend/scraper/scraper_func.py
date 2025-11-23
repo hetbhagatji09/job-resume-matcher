@@ -36,7 +36,7 @@ def scrape_jobs_from_url(url: str):
 
     try:
         jobs = scraper.scrape_jobs(url)
-        print("✅ Extracted jobs:", jobs)
+        print("✅ Extracted jobs:")
         if jobs:
             scraper.save_jobs_to_file(jobs)
         return jobs

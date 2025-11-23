@@ -1,0 +1,20 @@
+jobs:
+  css: "div.vacancy.vacancy-item"
+  multiple: true
+  children:
+    job_role:
+      css: "div.job-title"
+      type: Text
+
+    job_experience:
+      css: "div.job-requirement.desk"
+      type: Text
+
+    job_location:
+      # Targets the location span inside the job-location div (e.g., "Kochi").
+      css: "div.job-location .place"
+      type: Text
+
+    job_responsibilities:
+      css: "div.job-description p:nth-child(2)"
+      type: Text

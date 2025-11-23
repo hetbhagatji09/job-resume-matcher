@@ -14,12 +14,16 @@ embedding_service = JobEmbeddingService()
 def get_jobs(url: str = Query(..., description="Website URL to scrape jobs from")):
     try:
         jobs =scrape_jobs(url)
+        print("Job  type is ")
+        print(type(jobs))
+        if isinstance(jobs, dict):
+            jobs = [jobs]
         db: Session = SessionLocal()
         job_entries = create_jobs(db, jobs)
         embedding_service.store_job_embeddings(db, job_entries)
         db.close()
-        #return {"url": url, "total_jobs": len(jobs), "jobs": jobs}
-        return job_entries
+        return {"url": url, "total_jobs": len(jobs), "jobs": jobs}
+        # return job_entries
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
@@ -65,7 +69,7 @@ def get_job_text(
 @router.get("/match_resumes_by_job/{job_id}")
 def match_resumes_by_job(
     job_id: int = Path(..., description="Job ID to match resumes for"),
-    top_k: int = Query(5, description="Number of top resumes to return"),
+    top_k: int = Query(10, description="Number of top resumes to return"),
     db: Session = Depends(get_db)
 ):
     """
@@ -89,3 +93,26 @@ def match_resumes_by_job(
     result = embedding_service.match_resumes(db, job_data, top_k)
 
     return result
+@router.post("/create_job")
+def create_job(job_data: dict, db: Session = Depends(get_db)):
+    """
+    Create a new job manually by passing job details in JSON body.
+    """
+    try:
+        new_job = Job(
+            job_role=job_data.get("job_role"),
+            job_experience=job_data.get("job_experience"),
+            job_overview=job_data.get("job_overview"),
+            job_responsibilities=job_data.get("job_responsibilities"),
+            job_requirements=job_data.get("job_requirements")
+        )
+        db.add(new_job)
+        db.commit()
+        db.refresh(new_job)
+
+        # ✅ Store embeddings for this job
+        embedding_service.store_job_embeddings(db, [new_job])
+
+        return {"message": "Job created successfully", "job": new_job}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

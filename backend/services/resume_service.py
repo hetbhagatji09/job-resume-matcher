@@ -92,3 +92,4 @@ class ResumeService:
 
         return resume_obj
     
+    
