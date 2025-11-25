@@ -90,7 +90,7 @@ def match_resumes_by_job(
     }
 
     # 3️⃣ Use embedding service to find matching resumes
-    result = embedding_service.match_resumes(db, job_data, top_k)
+    result = embedding_service.match_resumes(db, job_id, top_k)
 
     return result
 @router.post("/create_job")
